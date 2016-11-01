@@ -207,6 +207,8 @@ _ut_set_error_message_handler = None
 if _lib_c is None:
     if sys.platform == 'win32':
         _lib_c = ctypes.cdll.msvcrt
+    elif sys.platform == "cygwin":
+        _lib_c = ctypes.CDLL(ctypes.util.find_library('cygwin'))
     else:
         _lib_c = ctypes.CDLL(ctypes.util.find_library('libc'))
 
